@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'role_id', 'rating'
     ];
 
     /**
@@ -36,4 +36,38 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo('App\Models\Role');
+    }
+
+    //auth methods
+    public function hasRole($role='')
+    {
+        return null !== $this->role()->where('role', $role)->first();
+    }
+
+    public function hasAnyRole($roles=[])
+    {
+        return null !== $this->role()->whereIn('role', $roles)->first();
+    }
+
+    public function authorizeRoles($roles)
+    {
+        if (is_array($roles)) {
+            return $this->hasAnyRole($roles) || abort(401, 'Access Denied!');
+        }
+        return $this->hasRole($roles) || abort(401, 'Access Denied!');
+    }
+
+    public function positions()
+    {
+        return $this->hasMany('App\Models\Position');
+    }
+
+    public function photos()
+    {
+        return $this->morphMany('App\Models\Photo', 'image');
+    }
 }

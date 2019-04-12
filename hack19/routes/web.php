@@ -12,5 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('map');
+    return view('entrance');
+});
+
+
+Route::get('/home', function () {
+    return view('home');
 });
