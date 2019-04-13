@@ -11,7 +11,8 @@
 	<link href="{{asset('css/stars.css')}}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--Leaflet-->
     <link rel="stylesheet" href="{{asset('leaflet/leaflet.css')}}" />
     <script src="{{asset('leaflet/leaflet.js')}}"></script>
@@ -39,36 +40,33 @@
 	  </form>
 	</div>
 	<aside id="menu-lateral" class="aside-mobile">
+		<div class="col-12 pt-12">
+			<div>
+				<img src="{{asset('img/logo.png')}}">
+			</div>
+			<h3 class="mb-1 ">Здравей user</h3>
+			<p class="mb-4">Вашия рейтинг: 5 <i class="fas fa-star"></i></p>
+		</div>
+		
 		<div class="col-12 pt-1">
 			<h2 class="mb-4 pb-2">Колко свободни места виждате?</h2>
 		</div>
 		<div class="col-xl-10 pb-5">
 			<form>
-				<input class="checkbox-budget" type="radio" name="budget" id="budget-1" onChange="this.form.submit()" >
-				<label class="for-checkbox-budget" for="budget-1">
+				<input class="parking-position" type="radio" name="budget" id="budget-1" onChange="this.form.submit()" >
+				<label class="for-parking-position" for="budget-1">
 					<span data-hover="НИКОЛКО">НИКОЛКО</span>
 				</label>
-				<input class="checkbox-budget" type="radio" name="budget" id="budget-2" onChange="this.form.submit()" >
-				<label class="for-checkbox-budget" for="budget-2">							
+				<input class="parking-position" type="radio" name="budget" id="budget-2" onChange="this.form.submit()" >
+				<label class="for-parking-position" for="budget-2">							
 					<span data-hover="МАЛКО">МАЛКО</span>
 				</label>
-				<input class="checkbox-budget" type="radio" name="budget" id="budget-3" onChange="this.form.submit()">
-				<label class="for-checkbox-budget" for="budget-3">							
+				<input class="parking-position" type="radio" name="budget" id="budget-3" onChange="this.form.submit()">
+				<label class="for-parking-position" for="budget-3">							
 					<span data-hover="МНОГО">МНОГО</span>
 				</label>
 			</form>
 		</div>
-		<div class="cont-scroll">					
-			<div class="ico-seccion">
-				<div class="circulo salud"></div>
-			</div>
-			<div id="btn-menu-lateral"></div>
-		</div>
-	</aside>
-    <div id="mapid" style="height:100vh; width: 100%;"></div>
-
-     
-	<footer>
 		<div class="stars">
 			
 			<form class="rating" >
@@ -84,6 +82,18 @@
 			</form>
 			
 		</div>
+		<div class="cont-scroll">					
+			<div class="ico-seccion">
+				<div class="circle salud"><div></div></div>
+			</div>
+			<div id="btn-menu-lateral"></div>
+		</div>
+	</aside>
+    <div id="mapid" style="height:100vh; width: 100%;"></div>
+
+     
+	<footer>
+		
 	</footer>
 </body>
 
