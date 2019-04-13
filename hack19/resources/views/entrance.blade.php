@@ -50,8 +50,9 @@ function showError(error) {
             error = "An unknown error occurred."
             break;
     }
+    console.log(error);
 }
-console.log(position);
+
 
 </script>
 
