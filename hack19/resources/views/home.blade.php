@@ -6,9 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Home</title>
+	<!-- main css -->
+	<link href="{{asset('css/style.css')}}" rel="stylesheet">
+	<link href="{{asset('css/stars.css')}}" rel="stylesheet">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <!--Leaflet-->
     <link rel="stylesheet" href="{{asset('leaflet/leaflet.css')}}" />
     <script src="{{asset('leaflet/leaflet.js')}}"></script>
@@ -24,10 +27,64 @@
 @endisset
 
 <body onload="getLocation()">
-     <div id="mapid" style="height:100vh; width: 100%;"></div>
+	<div id="cover">
+	  <form class="search" method="get" action="">
+		  <input class="s-text"type="text" placeholder="Search" onChange="this.form.submit()">
+		  <div class="td" id="s-cover">
+			<button type="submit">
+			  <div id="s-circle"></div>
+			  <span></span>
+			</button>
+		  </div>
+	  </form>
+	</div>
+	<aside id="menu-lateral" class="aside-mobile">
+		<div class="col-12 pt-1">
+			<h2 class="mb-4 pb-2">Колко свободни места виждате?</h2>
+		</div>
+		<div class="col-xl-10 pb-5">
+			<form>
+				<input class="checkbox-budget" type="radio" name="budget" id="budget-1" onChange="this.form.submit()" >
+				<label class="for-checkbox-budget" for="budget-1">
+					<span data-hover="НИКОЛКО">НИКОЛКО</span>
+				</label>
+				<input class="checkbox-budget" type="radio" name="budget" id="budget-2" onChange="this.form.submit()" >
+				<label class="for-checkbox-budget" for="budget-2">							
+					<span data-hover="МАЛКО">МАЛКО</span>
+				</label>
+				<input class="checkbox-budget" type="radio" name="budget" id="budget-3" onChange="this.form.submit()">
+				<label class="for-checkbox-budget" for="budget-3">							
+					<span data-hover="МНОГО">МНОГО</span>
+				</label>
+			</form>
+		</div>
+		<div class="cont-scroll">					
+			<div class="ico-seccion">
+				<div class="circulo salud"></div>
+			</div>
+			<div id="btn-menu-lateral"></div>
+		</div>
+	</aside>
+    <div id="mapid" style="height:100vh; width: 100%;"></div>
 
-     <!--for Test Purposes-->
-    <p id="demo"></p>
+     
+	<footer>
+		<div class="stars">
+			
+			<form class="rating" >
+				<input type="radio" id="star5" name="rating" value="5" onChange="this.form.submit()" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+				
+				<input type="radio" id="star4" name="rating" value="4" onChange="this.form.submit()" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+				
+				<input type="radio" id="star3" name="rating" value="3" onChange="this.form.submit()" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+				
+				<input type="radio" id="star2" name="rating" value="2" onChange="this.form.submit()" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+				
+				<input type="radio" id="star1" name="rating" value="1" onChange="this.form.submit()" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+			</form>
+			
+		</div>
+	</footer>
 </body>
 
 <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous">
@@ -102,5 +159,98 @@ function showError(error) {
   }
 }
 </script>
+<script>
 
+function MenuLateral(){
+	var dis     = this;
+	dis.menu    = document.getElementById('menu-lateral');
+	dis.btn     = document.getElementById('btn-menu-lateral');
+
+	dis.ontouch = 'ontouchstart' in window;
+	
+	dis.starts;
+	dis.while;
+	dis.ends;
+	dis.moving = false;
+	dis.startingPoint;
+	dis.moved;
+	dis.pos;
+	dis.open = false;
+ 
+	
+	if (dis.ontouch) {
+		dis.starts  = 'touchstart';
+		dis.while = 'touchmove';
+		dis.ends  = 'touchend';
+	}else{
+		dis.starts  = 'mousedown';
+		dis.while = 'mousemove';
+		dis.ends  = 'mouseup';
+	}
+
+	
+	dis.menu.addEventListener(dis.starts, function(event){
+      event.preventDefault;
+	
+		dis.moving = true;
+
+		
+		if (dis.ontouch) {
+			
+			dis.startingPoint = event.touches[0].clientX;
+			
+			dis.pos = dis.menu.offsetLeft * -1;
+		}else{
+			
+			dis.startingPoint = event.clientX;
+			
+			dis.pos = dis.menu.offsetLeft * -1;
+      }
+
+	});
+	
+	document.addEventListener(dis.while, function(event){
+      event.preventDefault();
+
+		if(dis.moving){
+
+			if(dis.ontouch){
+				dis.moved = event.touches[0].clientX - dis.startingPoint;
+				console.log('moved: '+dis.moved);
+
+			}else{
+				dis.moved = event.clientX - dis.startingPoint;
+				console.log('moved: '+dis.moved);
+         }
+
+			dis.menu.style.left = (dis.moved - dis.pos)+'px';
+		}else{
+
+      }
+	});
+
+	document.addEventListener(dis.ends, function(event){
+		dis.moving = false;
+      event.preventDefault();
+
+			if(dis.moved > 50){
+				dis.menu.style.left = 0+'px';
+				dis.open  = true;
+
+			}else if(dis.moved < -50){
+				dis.menu.style.left = -320+'px';
+				dis.open = false;
+			}else{
+				if(dis.open){
+					dis.menu.style.left = 0+'px';
+				}else{
+					dis.menu.style.left = -320+'px';
+				}
+			}
+	});
+}
+if (document.getElementById('menu-lateral') != null) {
+	var lateral = new MenuLateral();
+}
+</script>
 </html>
