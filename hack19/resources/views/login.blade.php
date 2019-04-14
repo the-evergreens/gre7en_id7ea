@@ -12,28 +12,30 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		@mapstyles
    </head>
-   <body onload="getLocation()">
+   <body>
 		<div class="wrapper" >
 			<div class="container">
-				<a href="" class="fb-login social-login">
+				<a onclick="getLocation()" href="" class="fb-login social-login">
 					Login with Facebook
 				</a>
-				<a href="" class="google-login social-login">
+				<a onclick="getLocation()" href="" class="google-login social-login">
 					Login with Google
 				</a>
 				<p class="seperator" >-OR-</p>
-				<form class="login"autocomplete="off" action="">
+				<!--<form class="login"autocomplete="off" action="">-->
+				<div class="login">
 					<div class="group">
 						<label for="email">Email:</label>
 						<input type="email" id="email" name="email">
 					</div>
 					<div class="group">
 						<label for="password">Password:</label>
-						<input id="password" type="password" name="password">
+						<input  id="password" type="password" name="password">
 					</div>
 					<a href="" class="forget-link">Forgot password?</a>
-					<input type="submit" value="Login" id="submit">
-				</form>
+					<input onclick="getLocation()" type="submit" value="Login" id="submit">
+				<!--</form>-->
+				</div>
 			</div>
 		</div>
 		<script>

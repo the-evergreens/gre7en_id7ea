@@ -78,9 +78,16 @@ class LocationController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $location = new Position;
+        $location->latitude = $_GET['latitude'];
+        $location->longitude = $_GET['longitude']; 
+        $location->density = $_GET['parking']; 
+        $location->user_id = '1';
+        $location->active = '1';
+        $location->save();
 
+        return back()->with('message', 'Благодарим!');
+    }
     /**
      * Display the specified resource.
      *

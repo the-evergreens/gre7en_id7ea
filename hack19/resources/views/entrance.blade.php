@@ -11,7 +11,7 @@
     @mapstyles
 </head>
 
-<body onload="getLocation()">
+<body onload="">
 </body>
 
 <script>

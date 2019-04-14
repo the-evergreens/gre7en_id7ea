@@ -61,24 +61,26 @@
 			<h2 class="mb-4 pb-2">Колко свободни места виждате?</h2>
 		</div>
 		<div class="col-xl-10 pb-5">
-			<form>
-				<input class="parking-position" type="radio" name="budget" id="budget-1" onChange="this.form.submit()" >
+			<form method="GET" action="{{ route('home.store') }}">
+				<input class="parking-position" type="radio" value="3" name="parking" id="budget-1" onChange="this.form.submit()" >
 				<label class="for-parking-position" for="budget-1">
-					<span data-hover="НИКОЛКО">НИКОЛКО</span>
+					<span data-hover="НИКОЛКО">НЯМА</span>
 				</label>
-				<input class="parking-position" type="radio" name="budget" id="budget-2" onChange="this.form.submit()" >
+				<input class="parking-position" type="radio" value="2" name="parking" id="budget-2" onChange="this.form.submit()" >
 				<label class="for-parking-position" for="budget-2">							
 					<span data-hover="МАЛКО">МАЛКО</span>
 				</label>
-				<input class="parking-position" type="radio" name="budget" id="budget-3" onChange="this.form.submit()">
+				<input class="parking-position" type="radio" value="1" name="parking" id="budget-3" onChange="this.form.submit()">
 				<label class="for-parking-position" for="budget-3">							
 					<span data-hover="МНОГО">МНОГО</span>
 				</label>
+				<input class="s-text" type="hidden" value="{{ $latitude }}" name="latitude">		 
+		   	<input class="s-text" type="hidden" name="longitude" value="{{ $longitude }}">
 			</form>
-		</div>
+			</div>
 		<div class="stars">
 			
-			<form class="rating" >
+			<form class="rating">
 				<input type="radio" id="star5" name="rating" value="5" onChange="this.form.submit()" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 				
 				<input type="radio" id="star4" name="rating" value="4" onChange="this.form.submit()" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
@@ -124,7 +126,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: ''
+    accessToken: 'sk.eyJ1IjoiYm9ibzc3IiwiYSI6ImNqdWZiYXVoMzA5NWczeXQ5OWU3ejRzMmQifQ.yYZ-_FzqlGMAv7UdBhXuOg'
 }).addTo(mymap);
 
 var marker = L.marker([windowLat, windowLon]).addTo(mymap);
@@ -142,6 +144,17 @@ marker2.bindPopup("<b>Вие сте тук!!</b>").openPopup();
 <script>
 var points = @php echo $points @endphp;
 var color;
+
+var greenIcon = L.icon({
+    iconUrl: '{{ asset('img/greenpoing.png')}}',
+    shadowUrl: '{{ asset('img/greenpointshadow.png')}}',
+
+    iconSize:     [38, 95], // size of the icon
+    shadowSize:   [50, 64], // size of the shadow
+    iconAnchor:   [22, 94], // point of the icon which will correspond to marker's location
+    shadowAnchor: [4, 62],  // the same for the shadow
+    popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
 
 for (let i = 0; i < points.length; i++) {
     let lat = points[i].latitude,
@@ -168,6 +181,9 @@ for (let i = 0; i < points.length; i++) {
     fillOpacity: 0.3,
     radius: 20
     }).addTo(mymap);
+
+  var marker = L.marker([lat, lon],{icon: greenIcon}).bindTooltip("5 мин", {permanent: false, className: "my-label", offset: [0, 0] }).addTo(mymap);
+	//marker.bindPopup("<b>"+message+"</b>").openPopup();
 }//end for
 
 </script>

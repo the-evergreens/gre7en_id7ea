@@ -23,5 +23,8 @@ Route::get('/test', function () {
 // });
 
 //positions
-Route::resource('/home', 'LocationController');
+Route::get('/home', 'LocationController@index');
+Route::get('/set', 'LocationController@store')->name('home.store');
+
+
 
