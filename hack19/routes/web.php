@@ -12,9 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('entrance');
+    return view('login');
 });
 
-Route::get('home', function () {
-    return view('home');
+Route::get('/test', function () {
+    return view('test');
 });
+// Route::get('home', function () {
+//     return view('home');
+// });
+
+//positions
+Route::resource('/home', 'LocationController');
+

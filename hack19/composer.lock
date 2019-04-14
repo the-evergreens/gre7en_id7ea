@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6414ef6ea45d3d4c4cc47901f4c0c0f0",
+    "content-hash": "c8a6fead95436cf6a108a30782fe629e",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -715,6 +715,63 @@
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
+            "name": "jcf/geocode",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jotafurtado/geocode.git",
+                "reference": "d598f618ea485333e972a04c0ccd263f0884c933"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jotafurtado/geocode/zipball/d598f618ea485333e972a04c0ccd263f0884c933",
+                "reference": "d598f618ea485333e972a04c0ccd263f0884c933",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~5.3|~6.0",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Jcf\\Geocode\\GeocodeServiceProvider"
+                    ],
+                    "aliases": {
+                        "Geocode": "Jcf\\Geocode\\Facades\\Geocode"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Jcf\\Geocode": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Carlos",
+                    "email": "jotacfurtado@gmail.com"
+                }
+            ],
+            "description": "Google Geocoding API for Laravel",
+            "keywords": [
+                "address",
+                "api",
+                "geocode",
+                "geocoding",
+                "google",
+                "laravel",
+                "latitude",
+                "longitude"
+            ],
+            "time": "2018-01-15T03:43:45+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v5.7.28",
             "source": {
@@ -1317,16 +1374,16 @@
         },
         {
             "name": "nexmo/client",
-            "version": "1.6.3",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Nexmo/nexmo-php.git",
-                "reference": "29f6856b4d918f3565bf56c26bc01dd664988b24"
+                "reference": "f8582d2361382e2b02352b1cb96c69ce2a2c7360"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/29f6856b4d918f3565bf56c26bc01dd664988b24",
-                "reference": "29f6856b4d918f3565bf56c26bc01dd664988b24",
+                "url": "https://api.github.com/repos/Nexmo/nexmo-php/zipball/f8582d2361382e2b02352b1cb96c69ce2a2c7360",
+                "reference": "f8582d2361382e2b02352b1cb96c69ce2a2c7360",
                 "shasum": ""
             },
             "require": {
@@ -1361,7 +1418,7 @@
                 }
             ],
             "description": "PHP Client for using Nexmo's API.",
-            "time": "2019-03-15T11:47:11+00:00"
+            "time": "2019-04-13T10:18:16+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -3307,6 +3364,49 @@
                 "environment"
             ],
             "time": "2019-01-29T11:11:52+00:00"
+        },
+        {
+            "name": "xabou/google-geocoding",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xabou/google-geocoding.git",
+                "reference": "0b4a88e65a54331205e01503ce33aed9beca48c1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xabou/google-geocoding/zipball/0b4a88e65a54331205e01503ce33aed9beca48c1",
+                "reference": "0b4a88e65a54331205e01503ce33aed9beca48c1",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "illuminate/support": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Xabou\\Geocoding\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "xabou",
+                    "email": "bouzopoulos@gmail.com"
+                }
+            ],
+            "description": "Google Geocoding API integration for Laravel",
+            "keywords": [
+                "geocoder",
+                "geocoding",
+                "google",
+                "laravel"
+            ],
+            "time": "2017-01-26T14:13:29+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",
