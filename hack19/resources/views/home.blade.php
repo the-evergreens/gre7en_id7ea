@@ -44,31 +44,38 @@
 			<div>
 				<img src="{{asset('img/logo.png')}}">
 			</div>
-			<h3 class="mb-1 ">Здравей user</h3>
-			<p class="mb-4">Вашия рейтинг: 5 <i class="fas fa-star"></i></p>
+			<h3 class="mb-1 ">Здравей {{ isset(Auth::user()->name) ? Auth::user()->name : ' Гост'  }}</h3>
+			<p class="mb-4">Вашия рейтинг: {{ isset(Auth::user()->rating) ? Auth::user()->rating : ' 0'  }} <i class="fas fa-star"></i></p>
 		</div>
 		
-		<div class="col-12 pt-1">
-			<h2 class="mb-4 pb-2">Колко свободни места виждате?</h2>
-		</div>
+		
 		<div class="col-xl-10 pb-5">
-			<form>
-				<input class="parking-position" type="radio" name="budget" id="budget-1" onChange="this.form.submit()" >
-				<label class="for-parking-position" for="budget-1">
-					<span data-hover="НИКОЛКО">НИКОЛКО</span>
+			<form  method="get" action="">
+				<input class="parking-position go" type="radio" name="parking" id="parking" >
+				<label class="for-parking-position go" for="parking">
+					<span data-hover="ПОТЕГЛЯМ">ПОТЕГЛЯМ</span>
 				</label>
-				<input class="parking-position" type="radio" name="budget" id="budget-2" onChange="this.form.submit()" >
-				<label class="for-parking-position" for="budget-2">							
-					<span data-hover="МАЛКО">МАЛКО</span>
-				</label>
-				<input class="parking-position" type="radio" name="budget" id="budget-3" onChange="this.form.submit()">
-				<label class="for-parking-position" for="budget-3">							
-					<span data-hover="МНОГО">МНОГО</span>
-				</label>
+				<div class="hide_buttons">
+					<div class="col-12 pt-1">
+						<h2 class="mb-4 pb-2">Има ли свободни места?</h2>
+					</div>
+					<input class="parking-position" type="radio" name="parking" id="parking-1" onChange="this.form.submit()" >
+					<label class="for-parking-position" for="parking-1">
+						<span data-hover="НИКОЛКО">Няма</span>
+					</label>
+					<input class="parking-position" type="radio" name="parking" id="parking-2" onChange="this.form.submit()" >
+					<label class="for-parking-position" for="parking-2">							
+						<span data-hover="МАЛКО">МАЛКО</span>
+					</label>
+					<input class="parking-position" type="radio" name="parking" id="parking-3" onChange="this.form.submit()" >
+					<label class="for-parking-position" for="parking-3">							
+						<span data-hover="МНОГО">МНОГО</span>
+					</label>
+				</div>
 			</form>
 		</div>
 		<div class="stars">
-			
+			<p class="mb-4">Достоверност на източника</p>
 			<form class="rating" >
 				<input type="radio" id="star5" name="rating" value="5" onChange="this.form.submit()" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 				
@@ -108,7 +115,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     maxZoom: 18,
     id: 'mapbox.streets',
-    accessToken: 'sk.eyJ1IjoiYm9ibzc3IiwiYSI6ImNqdWZiYXVoMzA5NWczeXQ5OWU3ejRzMmQifQ.yYZ-_FzqlGMAv7UdBhXuOg'
+    accessToken: 
 }).addTo(mymap);
 
 var circle = L.circle([43.2070024, 23.5636215], {
@@ -262,5 +269,16 @@ function MenuLateral(){
 if (document.getElementById('menu-lateral') != null) {
 	var lateral = new MenuLateral();
 }
+</script>
+<script>
+
+$(document).ready(function(){
+    $('.go').click(function(){
+    	var demovalue = $(this).val(); 
+        $(".go").hide(300);
+        $(".hide_buttons").show(600);
+    });
+});
+
 </script>
 </html>

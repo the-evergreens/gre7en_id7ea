@@ -4,10 +4,13 @@
 
 /****** Style Star Rating Widget *****/
 .stars{
-  width: 100%
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 15px;
 }
 .rating { 
-  width: 90%;
+  
   margin: 0 auto;
   border: none;
 }
@@ -30,7 +33,10 @@
 
 .rating > label { 
   color: #ddd; 
-  float: right; 
+  color: #ddd;
+  width: 18.2%;
+  float: right;
+  display: inline-block;
 }
 
 /***** CSS Magic to Highlight Stars on Hover *****/
