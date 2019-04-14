@@ -75,7 +75,7 @@
 			</form>
 		</div>
 		<div class="stars">
-			<p class="mb-4">Достоверност на източника</p>
+			<p class="mb-4">Беше ли достоверен източника ви?</p>
 			<form class="rating" >
 				<input type="radio" id="star5" name="rating" value="5" onChange="this.form.submit()" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
 				
